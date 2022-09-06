@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>For In</title>
+    <script src="./js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+
+        <div>Selected fruit is {{ clicked }}</div>
+        <btn
+        v-for="(item, index) in fruits"
+        v-bind:item="item"
+        v-bind:key="index"
+        v-on:showfruit="show"
+        >
+
+        <btn/>
+    </div>
+
+    <script>
+
+        Vue.component("btn", {
+            template: '<button v-on:click="displayfruit(item)">{{ item }}</button>',
+
+            props:['item'],
+            methods: {
+                displayfruit: function(item){
+                    this.$emit('showfruit', item);
+                }
+            },
+        });
+
+        let app = new Vue({
+            el: "#app",
+            data: {
+                fruits: ["apple", "banana", "jackfruit"],
+                clicked : ""
+            },
+            methods: {
+                show: function (a) {
+                    // console.log(a)
+                    this.clicked = a;
+                    console.log(this.clicked)
+                }
+            }
+        });
+
+        </script>
+    </body>
+    </html>
