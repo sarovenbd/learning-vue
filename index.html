@@ -1,0 +1,44 @@
+<html>
+   <head>
+      <title>VueJs Introduction</title>
+      <script type="text/javascript" src="js/vue.js"></script>
+   </head>
+   <body>
+      <div id="intro" style="text-align: center">
+         <div></div>
+         <h5>Count value: {{ count }}</h5>
+         <button @click="++count">Increment 1</button>
+         <button @click="incrementFive">Increment 5</button>
+         <button @click="changeage">Change age</button>
+      </div>
+      <script type="text/javascript">
+         var app = new Vue({
+            el: "#intro",
+            data: {
+               name: "Mohammad Shah Alam",
+               email: "saroven@yahoo.com",
+               age: 20,
+               count: 0
+            },
+            methods: {
+               changeName: function () {
+                  let inputName = document.getElementById("nameInput");
+                  console.log(inputName);
+                  this.name = "roven";
+               },
+               changeage: function () {
+                  this.age = 24;
+               },
+               incrementFive: function () {
+                  this.count = this.count + 5;
+               },
+               details: function () {
+                  return (
+                     "My age is:" + this.name + " and My age is:" + this.age
+                  );
+               }
+            }
+         });
+      </script>
+   </body>
+</html>

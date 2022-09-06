@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>Event</title>
+      <script src="./js/vue.js"></script>
+   </head>
+   <body>
+      <div id="app">
+         <button v-on:click="clicked">Alert</button>
+         <button v-on:click.once="clicked">Alert once</button>
+
+         <button @click="seeMsg">see message</button>
+
+         <button @click="hideMsg">hide message</button>
+
+         <---bind style object --->
+         <p v-bind:style="styleobj">{{ message }}</p>
+
+         <a href="http://www.google.com" v-on:click.prevent="clickme"
+            >Prevent Click</a
+         >
+         <input type="text" v-on:keyup.enter="showinputvalue" />
+
+         <p>{{ name }}</p>
+      </div>
+
+      <script>
+         let app = new Vue({
+            el: "#app",
+            data: {
+               message: "",
+               name: "",
+
+               styleobj: {
+                  backgroundColor: "#2196F3!important",
+                  cursor: "pointer",
+                  padding: "8px 16px",
+                  verticalAlign: "middle"
+               }
+            },
+            methods: {
+               clicked: function () {
+                  alert("clicked");
+               },
+               seeMsg: function () {
+                  this.message = "This is message";
+               },
+               hideMsg: function () {
+                  if (this.message != "") {
+                     this.message = "";
+                  } else {
+                     this.message = "Nothing to hide";
+                  }
+               },
+               showinputvalue: function (e) {
+                  this.name = e.target.value;
+               }
+            }
+         });
+      </script>
+   </body>
+</html>

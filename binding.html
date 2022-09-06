@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>binding</title>
+      <script src="./js/vue.js"></script>
+   </head>
+   <body>
+      <style>
+         .link {
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            background-color: black;
+         }
+      </style>
+
+      <!-- v-bind:class diye class bind kore -->
+      <!-- v-bind:href diye href bind kore -->
+      <!-- we can use :class for binding -->
+      <div id="app">
+         <a v-bind:class="{link:isActive}" v-bind:href="googleHref"
+            >Search With Google</a
+         >
+         <bindcomponent :class="{link:isActive}"></bindcomponent>
+
+         <newcomp></newcomp>
+
+         <img height="300" width="300" v-bind:src="imgsrc" alt="" />
+      </div>
+      <script>
+         let ap = new Vue({
+            el: "#app",
+            data: {
+               googleHref: "http://google.com.bd",
+               isActive: true,
+               imgsrc: "./img/img.jpeg"
+            },
+            components: {
+               bindcomponent: {
+                  template: "<p>this is bind component</p>"
+               },
+               newcomp: {
+                  template: "<h1>this is component header</h1>"
+               }
+            }
+         });
+      </script>
+   </body>
+</html>

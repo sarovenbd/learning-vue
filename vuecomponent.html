@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8" />
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>vue component</title>
+      <script src="./js/vue.js"></script>
+   </head>
+   <body>
+      <div id="comp">
+         <test></test>
+         <new></new>
+         <testcomponent></testcomponent>
+      </div>
+   </body>
+
+   <script>
+      Vue.component("test", {
+         template: "<div><h1>This is test component</h1></div>"
+      });
+
+      Vue.component("new", {
+         template:
+            "<div><h1>this is component heading</h1><p>This is component body</p></div>"
+      });
+
+      Vue.component("testcomponent", {
+         template:
+            '<p v-on:mouseover="changename()" v-on:mouseout="originalname()">created by {{ name }}</p>',
+         data: function () {
+            return {
+               name: "roven"
+            };
+         },
+         methods: {
+            changename: function () {
+               this.name = "Mohammad Shah Alam";
+            },
+            originalname: function () {
+               this.name = "Roven";
+            }
+         }
+      });
+      var vm = new Vue({
+         el: "#comp"
+      });
+   </script>
+</html>
